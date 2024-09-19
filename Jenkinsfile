@@ -1,14 +1,14 @@
 pipeline {
     agent any
     environment {
-        AWS_DEFAULT_REGION = 'us-east-1' // Replace with your AWS region
-        AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID') // Use your Jenkins credentials
+        AWS_DEFAULT_REGION = 'us-east-1'
+         AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID') // Use your Jenkins credentials
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
     stages {
         stage('Checkout') {
             steps {
-                 git branch: "main', url: "git@github.com:AhmedEmbaby-git/Terraform-Jenkins.git", credentialsId: "jenkinskey"
+              checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkinskey', url: 'http://github.com/AhmedEmbaby-git/Terraform-Jenkins']])
             }
         }
         stage('Terraform Init') {
@@ -28,4 +28,3 @@ pipeline {
         }
     }
 }
-
