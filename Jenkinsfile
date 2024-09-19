@@ -8,8 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                 git branch: 'main', url: 'git@github.com:AhmedEmbaby-git/Terraform-Jenkins.git
-', credentialsId: 'jenkinskey'
+                 git branch: "main', url: 'git@github.com:AhmedEmbaby-git/Terraform-Jenkins.git", credentialsId: "jenkinskey"
             }
         }
         stage('Terraform Init') {
