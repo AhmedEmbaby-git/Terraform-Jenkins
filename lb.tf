@@ -37,7 +37,7 @@ resource "aws_lb" "app_lb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.sg.id]
-  subnets            = 	[module.network.public1_id,module.network.public2_id] 
+  subnets            = 	[module.network.private1_id,module.network.private2_id]
    enable_cross_zone_load_balancing = true
 
   enable_deletion_protection = false
