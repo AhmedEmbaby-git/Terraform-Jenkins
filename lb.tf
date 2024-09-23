@@ -54,7 +54,7 @@ resource "aws_lb_target_group" "app_tg" {
   vpc_id   = module.network.vpc_id
 
   health_check {
-    path                = "/health"
+    path                = "/"
     interval            = 30
     timeout             = 5
     healthy_threshold   = 5
@@ -77,8 +77,8 @@ resource "aws_lb_listener" "app_listener" {
   }
 }
 
-resource "aws_lb_target_group_attachment" "app_tg_attachment" {
-  target_group_arn = aws_lb_target_group.app_tg.arn
-  target_id        = [aws_instance.ec2.private1_id,aws_instance.ec2.private2_id] # EC2 instance ID
-  port             = 80
-}
+# resource "aws_lb_target_group_attachment" "app_tg_attachment" {
+#   target_group_arn = aws_lb_target_group.app_tg.arn
+#   target_id        = [aws_instance.ec2.private1_id,aws_instance.ec2.private2_id] # EC2 instance ID
+#   port             = 80
+# }
